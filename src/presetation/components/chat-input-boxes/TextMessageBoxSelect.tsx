@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent } from 'react';
 
 interface Props {
   onSendMessage: (message: string, selectedOption: string) => void;
@@ -18,16 +18,17 @@ export const TextMessageBoxSelect = ({
   disableCorrections = false,
   options,
 }: Props) => {
-  const [message, setMessage] = useState("");
-  const [selectedOption, setSelectedOption] = useState<string>("");
+  const [message, setMessage] = useState('');
+  const [selectedOption, setSelectedOption] = useState<string>('');
 
   const handleSendMessage = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (message.trim().length === 0) return;
+    if (selectedOption === '') return;
 
     onSendMessage(message, selectedOption);
-    setMessage("");
+    setMessage('');
   };
 
   return (
@@ -43,9 +44,9 @@ export const TextMessageBoxSelect = ({
             name="message"
             className="w-full border rounded-xl text-gray-800 focus:outline-none focus:border-indigo-300 pl-4 h-10"
             placeholder={placeholder}
-            autoComplete={disableCorrections ? "on" : "off"}
-            autoCorrect={disableCorrections ? "on" : "off"}
-            spellCheck={disableCorrections ? "true" : "false"}
+            autoComplete={disableCorrections ? 'on' : 'off'}
+            autoCorrect={disableCorrections ? 'on' : 'off'}
+            spellCheck={disableCorrections ? 'true' : 'false'}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />

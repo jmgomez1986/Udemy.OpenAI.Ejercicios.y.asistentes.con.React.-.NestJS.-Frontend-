@@ -1,7 +1,7 @@
-import { useRef, useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from 'react';
 
 interface Props {
-  onSendMessage: (message: string) => void;
+  onSendMessage: (message: string, file: File) => void;
   placeholder?: string;
   disableCorrections?: boolean;
   accept?: string; // image/*
@@ -13,7 +13,7 @@ export const TextMessageBoxFile = ({
   disableCorrections = false,
   accept,
 }: Props) => {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
 
   const [selectedFile, setSelectedFile] = useState<File | null>();
   const inputFileRef = useRef<HTMLInputElement>(null);
@@ -21,10 +21,12 @@ export const TextMessageBoxFile = ({
   const handleSendMessage = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (message.trim().length === 0) return;
+    // if (message.trim().length === 0) return;
+    if (!selectedFile) return;
 
-    onSendMessage(message);
-    setMessage("");
+    onSendMessage(message, selectedFile);
+    setMessage('');
+    setSelectedFile(null);
   };
 
   return (
@@ -58,9 +60,9 @@ export const TextMessageBoxFile = ({
             name="message"
             className="flex w-full border rounded-xl text-gray-800 focus:outline-none focus:border-indigo-300 pl-4 h-10"
             placeholder={placeholder}
-            autoComplete={disableCorrections ? "on" : "off"}
-            autoCorrect={disableCorrections ? "on" : "off"}
-            spellCheck={disableCorrections ? "true" : "false"}
+            autoComplete={disableCorrections ? 'on' : 'off'}
+            autoCorrect={disableCorrections ? 'on' : 'off'}
+            spellCheck={disableCorrections ? 'true' : 'false'}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
@@ -73,8 +75,8 @@ export const TextMessageBoxFile = ({
             <span className="mr-2">Enviar</span>
           ) : (
             <span className="mr-2">
-              {" "}
-              {selectedFile.name.substring(0, 10) + "..."}{" "}
+              {' '}
+              {selectedFile.name.substring(0, 10) + '...'}{' '}
             </span>
           )}
           <i className="fa-regular fa-paper-plane"></i>

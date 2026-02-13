@@ -3,3 +3,4 @@ export * from './pros-cons-discusser.interface';
 export * from './translate.interface';
 export * from './text-to-audio.inteface';
 export * from './audio-to-text.interface';
+export * from './image-generation.interface';

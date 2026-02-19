@@ -1,4 +1,4 @@
-import type { TextToAudioResponseUseCase } from '../../interfaces';
+import type { TextToAudioResponseUseCase } from '../../../interfaces';
 
 export const textToAudioUseCase = async (
   prompt: string,

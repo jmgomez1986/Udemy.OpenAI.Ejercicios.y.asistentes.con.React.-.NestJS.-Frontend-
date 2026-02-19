@@ -55,3 +55,5 @@ Este curso está pensado para realizar una integración de React con Vite, hacia
 - Seccion 12: Frontend - Audio a texto
 - Seccion 13: Backend - Generacion de imagenes
 - Seccion 14: Frontend - Generacion y edicion de imagenes
+- Seccion 15: Backend - Asistentes de OpenAI
+- Seccion 16: Frontend - Asistentes

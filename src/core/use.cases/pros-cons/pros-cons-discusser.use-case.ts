@@ -1,7 +1,7 @@
 import type {
   prosConsDiscusserResponse,
   prosConsDiscusserResponseUseCase,
-} from "../../interfaces";
+} from '../../../interfaces';
 
 export const prosConsDiscusserUseCase = async (
   prompt: string,
@@ -10,9 +10,9 @@ export const prosConsDiscusserUseCase = async (
     const response = await fetch(
       `${import.meta.env.VITE_GPT_API}/pros-cons-discusser`,
       {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ prompt }),
       },
@@ -20,7 +20,7 @@ export const prosConsDiscusserUseCase = async (
 
     if (!response.ok) {
       throw new Error(
-        "Error en la solicitud a la API de GPT. No se pudo realizar la comparación.",
+        'Error en la solicitud a la API de GPT. No se pudo realizar la comparación.',
       );
     }
 
@@ -30,14 +30,14 @@ export const prosConsDiscusserUseCase = async (
       ok: true,
     };
   } catch (error) {
-    console.error("Error in prosConsDiscusserUseCase:", error);
+    console.error('Error in prosConsDiscusserUseCase:', error);
     return {
       ok: false,
-      role: "",
-      content: "",
-      refusal: "",
+      role: '',
+      content: '',
+      refusal: '',
       annotations: [],
-      message: "No se pudo realizar la comparación.",
+      message: 'No se pudo realizar la comparación.',
     };
   }
 };
